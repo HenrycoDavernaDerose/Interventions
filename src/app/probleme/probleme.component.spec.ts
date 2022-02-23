@@ -31,7 +31,13 @@ describe('ProblemeComponent', () => {
       let zone = component.problemeForm.controls['prenom'];
       zone.setValue("a".repeat(3));
       let errors = zone.errors || {};
-      expect(errors['minlength']).toBeTruthy();
+      expect(errors['minlength']).toBeFalsy();
       });
+      it("#3 | Zone PRÉNOM invalide avec 200 caractèress", () =>{
+        let zone = component.problemeForm.controls['prenom'];
+        zone.setValue("a".repeat(200));
+        let errors = zone.errors || {};
+        expect(errors['minlength']).toBeFalsy();
+        });
   
 });
