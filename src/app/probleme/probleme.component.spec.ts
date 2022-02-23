@@ -27,17 +27,29 @@ describe('ProblemeComponent', () => {
     let errors = zone.errors || {};
     expect(errors['minlength']).toBeTruthy();
     });
-    it("#2 | Zone PRÉNOM invalide avec 3 caractèress", () =>{
+    it("#2 | Zone PRÉNOM invalide avec 3 caractères", () =>{
       let zone = component.problemeForm.controls['prenom'];
       zone.setValue("a".repeat(3));
       let errors = zone.errors || {};
       expect(errors['minlength']).toBeFalsy();
       });
-      it("#3 | Zone PRÉNOM invalide avec 200 caractèress", () =>{
+      it("#3 | Zone PRÉNOM invalide avec 200 caractères", () =>{
         let zone = component.problemeForm.controls['prenom'];
         zone.setValue("a".repeat(200));
         let errors = zone.errors || {};
         expect(errors['minlength']).toBeFalsy();
         });
+        it("#4 | Zone PRÉNOM invalide avec aucun caractères", () =>{
+          let zone = component.problemeForm.controls['prenom'];
+          zone.setValue("a".repeat(0));
+          let errors = zone.errors || {};
+          expect(errors['required']).toBeTruthy();
+          });
+          it("#5 | Zone PRÉNOM invalide avec 10 espaces", () =>{
+            let zone = component.problemeForm.controls['prenom'];
+            zone.setValue(" ".repeat(10));
+            let errors = zone.errors || {};
+            expect(errors['minlength']).toBeFalsy();
+            });
   
 });
