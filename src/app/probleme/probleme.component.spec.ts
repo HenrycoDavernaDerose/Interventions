@@ -27,4 +27,11 @@ describe('ProblemeComponent', () => {
     let errors = zone.errors || {};
     expect(errors['minlength']).toBeTruthy();
     });
+    it("#2 | Zone PRÉNOM invalide avec 3 caractèress", () =>{
+      let zone = component.problemeForm.controls['prenom'];
+      zone.setValue("a".repeat(3));
+      let errors = zone.errors || {};
+      expect(errors['minlength']).toBeTruthy();
+      });
+  
 });
